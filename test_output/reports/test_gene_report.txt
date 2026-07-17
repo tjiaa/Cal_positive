@@ -1,9 +1,0 @@
-=== Positive Selection Analysis Report for test_gene ===
-
-Log Likelihood M7 (Null Model)       : -35.0307
-Log Likelihood M8 (Alternative Model): -35.0307
-LRT Statistic (2 * delta lnL)        : -0.0000
-Degrees of Freedom                   : 2
-P-value                              : 1.0000e+00
-
-Result: No significant evidence of positive selection (p >= 0.05).

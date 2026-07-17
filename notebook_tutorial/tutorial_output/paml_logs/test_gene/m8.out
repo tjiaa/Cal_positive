@@ -17,7 +17,7 @@ seq3                            ... ... ... ... ... ... ...
 
     1    1    2    1    3    1    1
 
-CODONML (in paml version 4.9j, October 2019)  /app/test_output2/alignments/test_gene.codon.aln.phy
+CODONML (in paml version 4.9j, October 2019)  /app/notebook_tutorial/tutorial_output/alignments/test_gene.codon.aln.phy
 Model: One dN/dS ratio,
 Codon frequency model: F3x4
 Site-class models:  beta&w>1 (11 categories)
@@ -117,9 +117,9 @@ Codon frequencies under model, for use in evolver (TTT TTC TTA TTG ... GGG):
 
 
 TREE #  1:  (1, 2, 3);   MP score: 0
-lnL(ntime:  3  np:  8):    -35.030667      +0.000000
+lnL(ntime:  3  np:  8):    -35.030663      +0.000000
    4..1     4..2     4..3
- 0.000004 0.000004 0.000004 38.626765 0.000010 0.005000 1.079260 14.613670
+ 0.000004 0.000004 0.000004 221.731857 0.000010 0.005000 99.000000 509.763229
 
 Note: Branch length is defined as number of nucleotide substitutions per codon (not per neucleotide site).
 
@@ -131,25 +131,25 @@ tree length =  0.000012
 
 Detailed output identifying parameters
 
-kappa (ts/tv) = 38.62677
+kappa (ts/tv) = 221.73186
 
 Parameters in M8 (beta&w>1):
-  p0 =   0.00001  p =   0.00500 q =   1.07926
- (p1 =   0.99999) w =  14.61367
+  p0 =   0.00001  p =   0.00500 q =  99.00000
+ (p1 =   0.99999) w = 509.76323
 
 
 MLEs of dN/dS (w) for site classes (K=11)
 
 p:   0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.99999
-w:   0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00003 14.61367
+w:   0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000  0.00000 509.76323
 
 dN & dS for each branch
 
  branch          t       N       S   dN/dS      dN      dS  N*dN  S*dS
 
-   4..1       0.000     16.6     13.4  14.6135   0.0000   0.0000    0.0    0.0
-   4..2       0.000     16.6     13.4  14.6135   0.0000   0.0000    0.0    0.0
-   4..3       0.000     16.6     13.4  14.6135   0.0000   0.0000    0.0    0.0
+   4..1       0.000     16.2     13.8 509.7581   0.0000   0.0000    0.0    0.0
+   4..2       0.000     16.2     13.8 509.7581   0.0000   0.0000    0.0    0.0
+   4..3       0.000     16.2     13.8 509.7581   0.0000   0.0000    0.0    0.0
 
 
 Naive Empirical Bayes (NEB) analysis
@@ -158,16 +158,16 @@ Positively selected sites (*: P>95%; **: P>99%)
 
             Pr(w>1)     post mean +- SE for w
 
-     1 M      1.000**       14.614
-     2 R      1.000**       14.614
-     3 I      1.000**       14.614
-     4 D      1.000**       14.614
-     5 R      1.000**       14.614
-     6 T      1.000**       14.614
-     7 I      1.000**       14.614
-     8 V      1.000**       14.614
-     9 R      1.000**       14.614
-    10 S      1.000**       14.614
+     1 M      1.000**       509.758
+     2 R      1.000**       509.758
+     3 I      1.000**       509.758
+     4 D      1.000**       509.758
+     5 R      1.000**       509.758
+     6 T      1.000**       509.758
+     7 I      1.000**       509.758
+     8 V      1.000**       509.758
+     9 R      1.000**       509.758
+    10 S      1.000**       509.758
 
 
 Bayes Empirical Bayes (BEB) analysis (Yang, Wong & Nielsen 2005. Mol. Biol. Evol. 22:1107-1118)
@@ -194,4 +194,4 @@ p :   0.100  0.100  0.100  0.100  0.100  0.100  0.100  0.100  0.100  0.100
 q :   0.100  0.100  0.100  0.100  0.100  0.100  0.100  0.100  0.100  0.100
 ws:   0.100  0.100  0.100  0.100  0.100  0.100  0.100  0.100  0.100  0.100
 
-Time used:  0:02
+Time used:  0:04

@@ -1,6 +1,6 @@
-seqfile = /app/test_output/alignments/test_gene.codon.aln.phy
-treefile = /app/test_output/trees/test_gene.unrooted.tree
-outfile = /app/test_output/paml_logs/test_gene/m8.out
+seqfile = /app/notebook_tutorial/tutorial_output/alignments/test_gene.codon.aln.phy
+treefile = /app/notebook_tutorial/tutorial_output/trees/test_gene.unrooted.tree
+outfile = /app/notebook_tutorial/tutorial_output/paml_logs/test_gene/m7.out
 
 noisy = 9
 verbose = 1
@@ -10,7 +10,7 @@ CodonFreq = 2
 clock = 0
 aaDist = 0
 model = 0
-NSsites = 8
+NSsites = 7
 icode = 0
 Mgene = 0
 fix_kappa = 0
