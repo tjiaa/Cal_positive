@@ -1,0 +1,49 @@
+LOCUS       NC_000913               3000 bp    DNA     circular BCT 14-OCT-2023
+DEFINITION  Escherichia coli str. K-12 substr. MG1655, complete genome.
+ACCESSION   NC_000913
+VERSION     NC_000913.3
+KEYWORDS    RefSeq.
+SOURCE      Escherichia coli str. K-12 substr. MG1655
+  ORGANISM  Escherichia coli str. K-12 substr. MG1655
+            Bacteria; Pseudomonadota; Gammaproteobacteria; Enterobacterales;
+            Enterobacteriaceae; Escherichia.
+FEATURES             Location/Qualifiers
+     source          1..3000
+                     /organism="Escherichia coli str. K-12 substr. MG1655"
+                     /mol_type="genomic DNA"
+                     /strain="K-12"
+                     /sub_strain="MG1655"
+     gene            190..255
+                     /gene="thrA"
+                     /locus_tag="b0002"
+                     /gene_synonym="thrA1; thrA2"
+     CDS             190..255
+                     /gene="thrA"
+                     /locus_tag="b0002"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="bifunctional aspartokinase/homoserine
+                     dehydrogenase 1"
+                     /translation="MRVLKF"
+     gene            500..565
+                     /gene="talB"
+                     /locus_tag="b0008"
+     CDS             500..565
+                     /gene="talB"
+                     /locus_tag="b0008"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="transaldolase B"
+                     /translation="MTDKLH"
+ORIGIN
+        1 agcttttcat ctgactgcac tggccgcggc ccgccatccg tcacccgaca atcgtacgta
+       61 tcagtacgta cgtacgtacg tacgtacgta cgtacgtacg tacgtacgta cgtacgtacg
+      121 tacgtacgta cgtacgtacg tacgtacgta cgtacgtacg tacgtacgta cgtacgtacg
+      181 tacgtacgta tgcgtgtact gaaattttag tacgtacgta cgtacgtacg tacgtacgta
+      241 cgtacgtacg tacgtacgta cgtacgtacg tacgtacgta cgtacgtacg tacgtacgta
+      301 cgtacgtacg tacgtacgta cgtacgtacg tacgtacgta cgtacgtacg tacgtacgta
+      361 cgtacgtacg tacgtacgta cgtacgtacg tacgtacgta cgtacgtacg tacgtacgta
+      421 cgtacgtacg tacgtacgta cgtacgtacg tacgtacgta cgtacgtacg tacgtacgta
+      481 cgtacgtacg tacgtacgt a tgcgacggtt acatttgtag cgtacgtacg tacgtacgta
+      541 cgtacgtacg tacgtacgta cgtacgtacg tacgtacgta cgtacgtacg tacgtacgta
+//
