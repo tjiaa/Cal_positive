@@ -32,8 +32,23 @@ def validate_and_translate(fasta_in, prefix, out_dir):
     with open(fasta_in, "r") as f:
         records = list(SeqIO.parse(f, "fasta"))
 
-    for rec in records:
+    # Keep track of used IDs to ensure uniqueness after truncation
+    used_ids = set()
+
+    for idx, rec in enumerate(records):
         seq_str = str(rec.seq).upper()
+
+        # PAML has a strict 30-character limit for sequence names.
+        # We must truncate the ID here so that MAFFT, FastTree, and PAML all use the exact same short ID.
+        safe_id = str(rec.id)[:25]
+        # Ensure it's unique
+        original_safe_id = safe_id
+        counter = 1
+        while safe_id in used_ids:
+            suffix = f"_{counter}"
+            safe_id = original_safe_id[:25 - len(suffix)] + suffix
+            counter += 1
+        used_ids.add(safe_id)
         # Ensure length is multiple of 3
         if len(seq_str) % 3 != 0:
             logging.warning(f"Sequence {rec.id} length is not a multiple of 3. Truncating.")
@@ -57,8 +72,8 @@ def validate_and_translate(fasta_in, prefix, out_dir):
             prot_seq = prot_seq[:-1]
             seq_str = seq_str[:-3]
 
-        clean_rec = SeqRecord(Seq(seq_str), id=rec.id, description="")
-        prot_rec = SeqRecord(prot_seq, id=rec.id, description="")
+        clean_rec = SeqRecord(Seq(seq_str), id=safe_id, description="")
+        prot_rec = SeqRecord(prot_seq, id=safe_id, description="")
 
         valid_records.append(clean_rec)
         prot_records.append(prot_rec)
@@ -111,8 +126,8 @@ def back_translate(nuc_fasta, prot_aln_fasta, prefix, out_dir):
     with open(codon_aln_phylip, 'w') as f:
         f.write(f" {len(codon_aln_records)} {len(codon_aln_records[0].seq)}\n")
         for rec in codon_aln_records:
-            # PAML sometimes struggles with long names, truncate to 30 chars
-            name = str(rec.id)[:30].ljust(30)
+            # Names are already safe and <30 chars, just left justify for phylip formatting
+            name = str(rec.id).ljust(30)
             f.write(f"{name}  {str(rec.seq)}\n")
 
     return codon_aln_fasta, codon_aln_phylip
