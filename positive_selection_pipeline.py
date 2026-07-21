@@ -25,6 +25,7 @@ def run_command(cmd, log_error=True):
 def validate_and_translate(fasta_in, prefix, out_dir):
     prot_fasta = os.path.join(out_dir, "alignments", f"{prefix}.prot.fasta")
     clean_nuc_fasta = os.path.join(out_dir, "alignments", f"{prefix}.clean_nuc.fasta")
+    id_mapping_file = os.path.join(out_dir, "reports", f"{prefix}_id_mapping.txt")
 
     valid_records = []
     prot_records = []
@@ -32,23 +33,16 @@ def validate_and_translate(fasta_in, prefix, out_dir):
     with open(fasta_in, "r") as f:
         records = list(SeqIO.parse(f, "fasta"))
 
-    # Keep track of used IDs to ensure uniqueness after truncation
-    used_ids = set()
+    id_map = {}
 
     for idx, rec in enumerate(records):
         seq_str = str(rec.seq).upper()
 
-        # PAML has a strict 30-character limit for sequence names.
-        # We must truncate the ID here so that MAFFT, FastTree, and PAML all use the exact same short ID.
-        safe_id = str(rec.id)[:25]
-        # Ensure it's unique
-        original_safe_id = safe_id
-        counter = 1
-        while safe_id in used_ids:
-            suffix = f"_{counter}"
-            safe_id = original_safe_id[:25 - len(suffix)] + suffix
-            counter += 1
-        used_ids.add(safe_id)
+        # PAML has a strict 30-character limit and fails unpredictably with certain special characters.
+        # To guarantee 100% compatibility across MAFFT, FastTree, and PAML, we use generic, safe internal IDs.
+        safe_id = f"Seq{idx+1}"
+        id_map[safe_id] = str(rec.id)
+
         # Ensure length is multiple of 3
         if len(seq_str) % 3 != 0:
             logging.warning(f"Sequence {rec.id} length is not a multiple of 3. Truncating.")
@@ -83,6 +77,13 @@ def validate_and_translate(fasta_in, prefix, out_dir):
 
     SeqIO.write(valid_records, clean_nuc_fasta, "fasta")
     SeqIO.write(prot_records, prot_fasta, "fasta")
+
+    # Save the mapping file so users can trace sequences back
+    with open(id_mapping_file, "w") as f:
+        f.write("Internal_ID\tOriginal_ID\n")
+        for s_id, orig_id in id_map.items():
+            f.write(f"{s_id}\t{orig_id}\n")
+    logging.info(f"Sequence ID mapping saved to {id_mapping_file}")
 
     return clean_nuc_fasta, prot_fasta
 
